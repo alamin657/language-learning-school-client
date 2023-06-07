@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/25496642.jpg'
+import { FaRegUserCircle } from "react-icons/fa";
 const Navbar = () => {
     const learningOptions = <>
         <li><Link>Home</Link></li>
@@ -28,7 +29,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a>picture</a>
+                <a><FaRegUserCircle /></a>
             </div>
         </div>
     );
