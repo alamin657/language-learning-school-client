@@ -1,9 +1,10 @@
 import React from 'react';
+import TopSlider from './TopSlider';
 
 const Home = () => {
     return (
         <div>
-            <h1>fjdlf</h1>
+            <TopSlider></TopSlider>
         </div>
     );
 };
