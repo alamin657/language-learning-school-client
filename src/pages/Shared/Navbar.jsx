@@ -1,14 +1,23 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/25496642.jpg'
-import { FaRegUserCircle } from "react-icons/fa";
+// import { FaRegUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../Providers/AuthProviders';
+import Swal from 'sweetalert2';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'You are LogOut',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+            })
+
             .catch(error => console.log(error));
     }
 
@@ -17,7 +26,9 @@ const Navbar = () => {
         <li><Link>Home</Link></li>
         <li><Link>Instructors</Link></li>
         <li><Link>Classes</Link></li>
-        <li><Link>DashBoard</Link></li>
+        {
+            user && <li><Link>DashBoard</Link></li>
+        }
         {
             user ? <>
                 <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
@@ -46,7 +57,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-1">
-                <a><FaRegUserCircle /></a>
+                {/* <a><FaRegUserCircle /></a> */}
+                {
+                    user && <img title={user?.displayName} className="rounded-full w-8" src={user?.photoURL}></img>
+                }
             </div>
         </div>
     );
