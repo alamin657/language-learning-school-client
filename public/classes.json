@@ -1,0 +1,65 @@
+[
+    {
+        "image": "https://img.freepik.com/free-photo/portrait-gorgeous-hispanic-woman-teaching-spanish-standing-flip-chart_662251-463.jpg?size=626&ext=jpg&ga=GA1.1.861830496.1686233736&semt=ais",
+        "name": "Spanish for Beginners",
+        "instructor": "Maria Rodriguez",
+        "seats": 15,
+        "price": 50
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/teacher-doing-english-lesson-online-his-students_23-2148963017.jpg?size=626&ext=jpg&ga=GA1.1.861830496.1686233736&semt=ais",
+        "name": "French Conversation",
+        "instructor": "Sophie Martin",
+        "seats": 10,
+        "price": 45
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/young-attractive-dark-haired-man-glasses-is-standing-near-whiteboard-he-wears-blue-shirt-dark-jacket-he-got-luck-with-job_197531-563.jpg?size=626&ext=jpg&ga=GA1.2.861830496.1686233736&semt=ais",
+        "name": "German Grammar",
+        "instructor": "Maximilian Schneider",
+        "seats": 12,
+        "price": 55
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/teaching-process-group-people-business-conference-modern-classroom-daytime_146671-16417.jpg?size=626&ext=jpg&ga=GA1.2.861830496.1686233736&semt=ais",
+        "name": "Italian Pronunciation",
+        "instructor": "Giulia Rossi",
+        "seats": 8,
+        "price": 40
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/close-up-colleagues-learning-work_23-2149300706.jpg?size=626&ext=jpg&ga=GA1.2.861830496.1686233736&semt=sph",
+        "name": "Mandarin Chinese Basics",
+        "instructor": "Li Wei",
+        "seats": 10,
+        "price": 50
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/talking-audience_1098-14094.jpg?size=626&ext=jpg&ga=GA1.1.861830496.1686233736&semt=sph",
+        "name": "Japanese Writing",
+        "instructor": "Hiroshi Tanaka",
+        "seats": 12,
+        "price": 55
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/seminar-bankers_1098-15828.jpg?size=626&ext=jpg&ga=GA1.1.861830496.1686233736&semt=sph",
+        "name": "Business English",
+        "instructor": "Emily Johnson",
+        "seats": 15,
+        "price": 60
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/this-is-our-strategy-few-months-business-people-manager-working-their-new-project-classroom_146671-16427.jpg?size=626&ext=jpg&ga=GA1.2.861830496.1686233736&semt=ais",
+        "name": "Arabic Conversation",
+        "instructor": "Ahmed Khalid",
+        "seats": 10,
+        "price": 45
+    },
+    {
+        "image": "https://img.freepik.com/free-photo/pupils-doing-task-laptops-focused-teacher-monitoring-them_74855-10356.jpg?size=626&ext=jpg&ga=GA1.1.861830496.1686233736&semt=ais",
+        "name": "Portuguese for Travelers",
+        "instructor": "Carolina Santos",
+        "seats": 8,
+        "price": 40
+    }
+]
