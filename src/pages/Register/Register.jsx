@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -28,7 +29,6 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                setError('')
                 Swal.fire({
                     icon: 'success',
                     title: 'Your Google LogIn Successfully',
@@ -38,7 +38,7 @@ const Register = () => {
 
             })
             .catch(error => {
-                setError(error.message)
+                console.log(error)
             })
     }
     return (

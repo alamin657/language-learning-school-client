@@ -1,23 +1,63 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
+import Swal from 'sweetalert2';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { signIn, googleProviderSignIn } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+    const onSubmit = data => {
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Your LogIn Successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                navigate(from, { replace: true });
+            })
+    }
+    const handleGoogle = () => {
+        googleProviderSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Your Google LogIn Successfully',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email"  {...register("email", { required: true })} name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            <input type="password"  {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" />
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
@@ -26,7 +66,7 @@ const Login = () => {
                     <p className='ml-2 mb-2'><small>Please <Link to='/signup'><small className='text-orange-700 font-bold'>Create an Account?</small></Link> </small></p>
                     <div className="divider">
                     </div>
-                    <button className="btn btn-circle btn-outline mx-auto mb-4">
+                    <button onClick={handleGoogle} className="btn btn-circle btn-outline mx-auto mb-4">
                         G
                     </button>
                 </div>
