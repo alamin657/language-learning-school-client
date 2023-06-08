@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/25496642.jpg'
 import { FaRegUserCircle } from "react-icons/fa";
+import { AuthContext } from '../../Providers/AuthProviders';
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
+
+
     const learningOptions = <>
         <li><Link>Home</Link></li>
         <li><Link>Instructors</Link></li>
         <li><Link>Classes</Link></li>
         <li><Link>DashBoard</Link></li>
+        {
+            user ? <>
+                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+            </> : <>
+                <li><Link to="/login">Login</Link></li>
+            </>
+        }
     </>
     return (
         <div className="navbar  bg-opacity-20 bg-black  max-w-screen-xl  ">
@@ -28,7 +45,7 @@ const Navbar = () => {
                     {learningOptions}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-1">
                 <a><FaRegUserCircle /></a>
             </div>
         </div>

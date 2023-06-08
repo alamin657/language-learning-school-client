@@ -42,11 +42,10 @@ const AuthProviders = ({ children }) => {
         return signInWithPopup(auth, googleProvider);
     }
 
-    const updateProfileUser = (name, photoURL, user) => {
-        return updateProfile(user, {
-            displayName: name,
-            photoURL: photoURL
-        })
+    const updateProfileUser = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        });
     }
 
     const authInfo = {

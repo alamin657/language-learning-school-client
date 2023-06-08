@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext()
@@ -15,4 +15,4 @@ const PrivateRoute = ({ children }) => {
     return <Navigate to='/login' state={{ from: location }} replace></Navigate>
 };
 
-export default PrivateRoute;
+export default PrivateRoute; 
