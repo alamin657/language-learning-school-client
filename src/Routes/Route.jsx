@@ -6,7 +6,8 @@ import Login from "../pages/Login/Login";
 import ErrorPage from "../component/ErrorPage/ErrorPage";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
-
+import DashBoard from "../layout/DashBoard";
+import StudentDashboard from "../pages/DashBoard/StudentDashboard";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -34,6 +35,19 @@ const router = createBrowserRouter([
                 element: <Instructors></Instructors>
             }
         ]
+
+    },
+    {
+        path: 'dashboard',
+        element: <DashBoard></DashBoard>,
+        children: [
+            {
+                path: 'studentdashboard',
+                element: <StudentDashboard></StudentDashboard>
+            }
+        ]
     }
+
+
 ])
 export default router;
