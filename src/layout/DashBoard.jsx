@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Footer from '../pages/Shared/Footer';
 import Navbar from '../pages/Shared/Navbar';
+import Sidebar from '../pages/DashBoard/Sidebar';
 
 const DashBoard = () => {
     return (
@@ -16,21 +17,7 @@ const DashBoard = () => {
                         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                         <Outlet></Outlet>
                     </div>
-                    <div className="drawer-side">
-                        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                            {/* Sidebar content here */}
-                            <div className="avatar">
-                                <div className="w-24  rounded-full">
-                                    <img src="https://img.freepik.com/premium-vector/education-icon-university-college-academy_8071-16303.jpg?size=626&ext=jpg&ga=GA1.2.1803344305.1673915057&semt=ais" />
-                                </div>
-
-                            </div>
-                            <li><Link to='/dashboard/studentdashboard'>Student DashBoard</Link></li>
-                            <li><a>Sidebar Item 2</a></li>
-                        </ul>
-
-                    </div>
+                    <Sidebar></Sidebar>
                 </div>
                 <Footer></Footer>
             </div>

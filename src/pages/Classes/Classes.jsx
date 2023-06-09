@@ -1,12 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProviders';
+import Swal from 'sweetalert2';
 
 const Classes = () => {
+    const { user } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/classes')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])
+
+    const handleSelected = (selected) => {
+        const { _id, image, instructor, seats, price } = selected
+        const data = {
+            image,
+            instructor,
+            seats,
+            price,
+            email: user?.email
+        }
+        console.log(data)
+        fetch(`http://localhost:5000/students/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.upsertedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'My Selected Class   Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
     return (
         <>
             <div>
@@ -27,7 +64,7 @@ const Classes = () => {
                             <hr />
                             <div className="card-actions justify-end">
                                 <p className='text-xl'>Seats:{classe.seats}</p>
-                                <button className="btn btn-primary">Selected</button>
+                                <button onClick={() => handleSelected(classe)} className="btn btn-primary">Selected</button>
                             </div>
                         </div>
                     </div>

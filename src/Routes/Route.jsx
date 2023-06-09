@@ -7,7 +7,8 @@ import ErrorPage from "../component/ErrorPage/ErrorPage";
 import Classes from "../pages/Classes/Classes";
 import Instructors from "../pages/Instructors/Instructors";
 import DashBoard from "../layout/DashBoard";
-import StudentDashboard from "../pages/DashBoard/StudentDashboard";
+import MySelected from "../pages/DashBoard/MySelected";
+import MyEnrolled from "../pages/DashBoard/MyEnrolled";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -42,8 +43,12 @@ const router = createBrowserRouter([
         element: <DashBoard></DashBoard>,
         children: [
             {
-                path: 'studentdashboard',
-                element: <StudentDashboard></StudentDashboard>
+                path: '/dashboard/selected',
+                element: <MySelected></MySelected>
+            },
+            {
+                path: '/dashboard/myenrolled',
+                element: <MyEnrolled></MyEnrolled>
             }
         ]
     }
