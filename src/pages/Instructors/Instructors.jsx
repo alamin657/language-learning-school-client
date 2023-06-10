@@ -10,7 +10,6 @@ const Instructors = () => {
     return (
         <div className="overflow-x-auto mt-2">
             <table className="table">
-                {/* head */}
                 <thead className='bg-teal-400'>
                     <tr className='text-black'>
                         <th>Instructor Image</th>
