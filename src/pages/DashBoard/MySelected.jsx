@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 const MySelected = () => {
     const { user } = useContext(AuthContext)
     const [items, setitems] = useState([])
@@ -75,9 +76,10 @@ const MySelected = () => {
                                 <td>{item.instructor}</td>
                                 <td>{item.price}</td>
                                 <td>{item.seats}</td>
-                                <td className='flex gap-2'><button className="btn btn-circle btn-outline bg-orange-600">
+                                <td className='flex gap-2'><Link to='/dashboard/payment'><button className="btn btn-circle btn-outline bg-orange-600">
                                     pay
-                                </button><button onClick={() => handleDelete(item?._id)} className="btn btn-circle btn-outline bg-green-600">
+                                </button></Link>
+                                    <button onClick={() => handleDelete(item?._id)} className="btn btn-circle btn-outline bg-green-600">
                                         D
                                     </button>
 

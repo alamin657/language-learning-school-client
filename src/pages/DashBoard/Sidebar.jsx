@@ -17,6 +17,7 @@ const Sidebar = () => {
                 <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li>
                 <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
             </ul>
+
         </div>
     );
 };
