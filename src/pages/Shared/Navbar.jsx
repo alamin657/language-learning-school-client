@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/25496642.jpg'
-// import { FaRegUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
 const Navbar = () => {
@@ -57,7 +56,6 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end gap-1">
-                {/* <a><FaRegUserCircle /></a> */}
                 {
                     user && <img title={user?.displayName} className="rounded-full w-8" src={user?.photoURL}></img>
                 }

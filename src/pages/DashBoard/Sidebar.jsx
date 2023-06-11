@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
 
 const Sidebar = () => {
-    const isAdmin = true;
+    // const isAdmin = true;
+    const { role } = useContext(AuthContext)
     return (
         <div className="drawer-side">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -14,20 +16,18 @@ const Sidebar = () => {
                     </div>
 
                 </div>
-                <li><Link to='/dashboard/selected'>My Selected Classes</Link></li>
-                <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li>
-                <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
-                <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
-                <li><Link to='/dashboard/manageusers'>Manage Users</Link></li>
-                {/* {
-                    isAdmin ? <> <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li></> :
-                        <>
-                            <li><Link to='/dashboard/selected'>My Selected Classes</Link></li>
-                            <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li>
-                            <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
+                {
+                    !role && <> <li><Link to='/dashboard/selected'>My Selected Classes</Link></li>
+                        <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li></>}
 
-                        </>
-                } */}
+                {
+                    role === 'admin' && <><li><Link to='/dashboard/addClass'>Add A Class</Link></li>
+                        <li><Link to='/dashboard/myClass'>My Classes</Link></li></>}
+
+                {
+                    role === 'admin' && <> <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
+                        <li><Link to='/dashboard/manageusers'>Manage Users</Link></li></>
+                }
             </ul>
 
         </div>
