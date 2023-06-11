@@ -12,6 +12,7 @@ import MyEnrolled from "../pages/DashBoard/MyEnrolled";
 import AddAClass from "../pages/DashBoard/AddAClass";
 import Payment from "../pages/DashBoard/Payment/Payment";
 import ManageClasses from "../pages/DashBoard/ManageClasses";
+import ManageUsers from "../pages/DashBoard/ManageUsers";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/manageclasses',
                 element: <ManageClasses></ManageClasses>
+            },
+            {
+                path: '/dashboard/manageusers',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }

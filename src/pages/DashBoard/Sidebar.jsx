@@ -18,6 +18,7 @@ const Sidebar = () => {
                 <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li>
                 <li><Link to='/dashboard/addClass'>Add A Class</Link></li>
                 <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
+                <li><Link to='/dashboard/manageusers'>Manage Users</Link></li>
                 {/* {
                     isAdmin ? <> <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li></> :
                         <>

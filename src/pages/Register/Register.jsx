@@ -8,6 +8,21 @@ const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateProfileUser, googleProviderSignIn } = useContext(AuthContext)
     const onSubmit = data => {
+
+        const { name, email, photoURL } = data;
+        const newItem = { name, email, photoURL }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newItem)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+            })
+
         if (data.password === data.confirmpassword) {
             createUser(data.email, data.password)
                 .then(result => {
@@ -29,6 +44,19 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                const { displayName, email, photoURL } = user;
+                const newItem = { displayName, email, photoURL }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newItem)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result)
+                    })
                 Swal.fire({
                     icon: 'success',
                     title: 'Your Google LogIn Successfully',
@@ -40,6 +68,8 @@ const Register = () => {
             .catch(error => {
                 console.log(error)
             })
+
+
     }
     return (
         <div className="hero min-h-screen bg-base-200">
