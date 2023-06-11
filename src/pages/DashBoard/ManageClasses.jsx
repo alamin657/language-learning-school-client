@@ -1,12 +1,79 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 const ManageClasses = () => {
     const [manages, setManages] = useState([])
+    const [denied, setDenied] = useState(null)
     useEffect(() => {
         fetch(`http://localhost:5000/classes`)
             .then(res => res.json())
             .then(data => setManages(data))
     }, [])
+
+    const handleApproved = (id) => {
+        const approved = {
+            status: 'approve'
+        }
+        fetch(`http://localhost:5000/classes/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(approved)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.upsertedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Approved Class   Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+    const handleDenied = (id) => {
+        setDenied(id)
+    }
+
+    const handleFeedback = event => {
+        event.preventDefault()
+        const Denied = {
+            status: 'Deny',
+        }
+
+        const feedback = event.target.feedback.value
+        if (feedback) {
+            fetch(`http://localhost:5000/classes/${denied}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(Denied)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.upsertedCount > 0) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Denied Class   Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        })
+                    }
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+
+
+    }
     return (
         <>
             <h1 className='text-xl text-center mt-2 text-purple-700'>Manage Classes</h1>
@@ -50,7 +117,25 @@ const ManageClasses = () => {
                                 <td>{manage.seats}</td>
                                 <td>{manage.price}</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">Status</button>
+
+                                    <div className='flex gap-1'>
+                                        <button className="btn btn-primary btn-xs">Pending</button>
+                                        <button onClick={() => handleApproved(manage._id)} className="btn btn-success btn-xs">Approve</button>
+                                        <label onClick={() => handleDenied(manage._id)} htmlFor="my_modal_6" className="btn btn-warning btn-xs">Deny</label>
+                                        <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+                                        <div className="modal">
+                                            <div className="modal-box">
+                                                <form onSubmit={handleFeedback}>
+                                                    <textarea name='feedback' className="textarea textarea-secondary"></textarea><br />
+                                                    <input className='btn btn-primary' type="submit" value="submit" />
+                                                </form>
+                                                <div className="modal-action">
+
+                                                    <label htmlFor="my_modal_6" className="btn">Close!</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </th>
                             </tr>)
                         }
