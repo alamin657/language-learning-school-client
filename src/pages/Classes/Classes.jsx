@@ -51,11 +51,11 @@ const Classes = () => {
                 <p className='text-center text-gray-500'>
                     Language learning school classes typically aim to teach students a new language or improve their existing language skills. <br />  These classes are designed to provide structured  instruction and guidance to help learners develop proficiency <br /> in reading, writing, speaking. and listening in the target language. </p>
             </div>
-            <div className='grid sm:grid-cols-1 mt-4 md:grid-cols-3'>
+            <div className='grid sm:grid-cols-1 mt-4 md:grid-cols-3 gap-2'>
                 {
                     classes.map(classe => <div
                         key={classe._id}
-                        className="card card-compact gap-2 mt-2  w-96 bg-base-100 shadow-xl">
+                        className="card card-compact gap-2 mt-2  w-full bg-base-100 shadow-xl">
                         <figure><img className='p-5' src={classe.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h1 className='text-xl'>${classe.price}/<span>Lifetime</span></h1>
