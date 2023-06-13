@@ -76,7 +76,7 @@ const MySelected = () => {
                                 <td>{item.instructor}</td>
                                 <td>{item.price}</td>
                                 <td>{item.seats}</td>
-                                <td className='flex gap-2'><Link to='/dashboard/payment'><button className="btn btn-circle btn-outline bg-orange-600">
+                                <td className='flex gap-2'><Link to={`/dashboard/payment/${item?._id}`}><button className="btn btn-circle btn-outline bg-orange-600">
                                     pay
                                 </button></Link>
                                     <button onClick={() => handleDelete(item?._id)} className="btn btn-circle btn-outline bg-green-600">

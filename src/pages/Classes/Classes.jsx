@@ -3,7 +3,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
 
 const Classes = () => {
-    const { user } = useContext(AuthContext)
+    const { user, role } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/classes')
@@ -12,15 +12,15 @@ const Classes = () => {
     }, [])
 
     const handleSelected = (selected) => {
-        const { _id, image, instructor, seats, price } = selected
+        const { _id, image, instructor, seats, price, enrolled } = selected
         const data = {
             image,
+            enrolled,
             instructor,
             seats,
             price,
             email: user?.email
         }
-        console.log(data)
         fetch(`http://localhost:5000/students/${_id}`, {
             method: 'PUT',
             headers: {
@@ -55,16 +55,17 @@ const Classes = () => {
                 {
                     classes.map(classe => <div
                         key={classe._id}
-                        className="card card-compact gap-2 mt-2  w-full bg-base-100 shadow-xl">
+                        className={classe.seats === classe.enrolled ? 'card card-compact w-96 bg-red-600   shadow-xl mt-2' : 'card card-compact w-96 bg-base-100 shadow-xl mt-2'}>
                         <figure><img className='p-5' src={classe.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h1 className='text-xl'>${classe.price}/<span>Lifetime</span></h1>
                             <p className='font-bold'>{classe.instructor}</p>
                             <h2 className='text-xl'>{classe.name}</h2>
+                            <p className='text-xl'>Seats:{classe.seats}</p>
                             <hr />
                             <div className="card-actions justify-end">
-                                <p className='text-xl'>Seats:{classe.seats}</p>
-                                <button onClick={() => handleSelected(classe)} className="btn btn-primary">Selected</button>
+                                <p className='text-xl'>Enrolled:{classe.enrolled}</p>
+                                <button disabled={role === 'admin' || role === 'instructor' || classe.seats === classe.enrolled} onClick={() => handleSelected(classe)} className="btn btn-primary">Select</button>
                             </div>
                         </div>
                     </div>

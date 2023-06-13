@@ -4,6 +4,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 const MyClasses = () => {
     const { user } = useContext(AuthContext)
     const [items, setItems] = useState([])
+
     useEffect(() => {
         fetch(`http://localhost:5000/classes/${user?.email}`)
             .then(res => res.json())
@@ -12,7 +13,7 @@ const MyClasses = () => {
     return (
         <div className="overflow-x-auto">
             <table className="table">
-                {/* head */}
+
                 <thead>
                     <tr className='text-black bg-purple-800'>
                         <th>Image</th>

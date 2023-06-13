@@ -14,11 +14,11 @@ const TopSlider = () => {
     const pagination = {
         clickable: true,
         renderBullet: function (index, className) {
-            return '<span class="' + className + '">' + (index + 1) + "</span>";
+            return '<span  class="' + className + '">' + (index + 1) + "</span>";
         },
     };
     return (
-        <section className='mt-4'>
+        <section >
 
             <Swiper
                 pagination={pagination}

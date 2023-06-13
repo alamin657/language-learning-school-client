@@ -28,13 +28,7 @@ const Navbar = () => {
         {
             user && <li><Link to='/dashboard'>DashBoard</Link></li>
         }
-        {
-            user ? <>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
-            </> : <>
-                <li><Link to="/login">Login</Link></li>
-            </>
-        }
+
     </>
     return (
         <div className="navbar  bg-opacity-20 bg-black  max-w-screen-xl  ">
@@ -58,6 +52,13 @@ const Navbar = () => {
             <div className="navbar-end gap-1">
                 {
                     user && <img title={user?.displayName} className="rounded-full w-8" src={user?.photoURL}></img>
+                }
+                {
+                    user ? <>
+                        <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                    </> : <>
+                        <li><Link to="/login">Login</Link></li>
+                    </>
                 }
             </div>
         </div>

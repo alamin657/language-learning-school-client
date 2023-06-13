@@ -8,7 +8,9 @@ import AuthProviders from './Providers/AuthProviders'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProviders>
-      <RouterProvider router={router}></RouterProvider>
+      <div className='overflow-hidden'>
+        <RouterProvider router={router}></RouterProvider>
+      </div>
     </AuthProviders>
   </React.StrictMode>,
 )
