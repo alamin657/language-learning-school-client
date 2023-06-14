@@ -18,10 +18,9 @@ const Payment = () => {
         <div className='mt-4 ml-4'>
             <h1 className='text-center text-xl text-purple-600'>Thanks for coming to Payment!!!</h1>
             <Elements stripe={stripePromise}>
-                <CheckoutForm image={payments?.image} price={payments?.price} id={payments._id}></CheckoutForm>
+                <CheckoutForm enrolled={payments?.enrolled} image={payments?.image} price={payments?.price} id={payments._id}></CheckoutForm>
             </Elements>
         </div>
-    );
+    )
 };
-
 export default Payment;

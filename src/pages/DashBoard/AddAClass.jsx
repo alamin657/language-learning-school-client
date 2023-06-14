@@ -26,8 +26,8 @@ const AddAClass = () => {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const imgURL = imgResponse.data.display_url;
-                    const { name, instructor, email, price, seats } = data;
-                    const addClass = { name, instructor, email, price: parseFloat(price), seats: parseFloat(seats), image: imgURL }
+                    const { name, instructor, email, price, seats, status, enrolled } = data;
+                    const addClass = { name, status, enrolled, instructor, email, price: parseFloat(price), seats: parseFloat(seats), image: imgURL }
                     console.log(addClass)
                     axiosSecure.post('/classes', addClass)
                         .then(data => {
@@ -122,6 +122,20 @@ const AddAClass = () => {
                                     <span className="label-text">Price</span>
                                 </label>
                                 <input type="text"  {...register("price", { required: true })} name='price' placeholder="Price" className="input input-bordered" />
+                            </div>
+                        </div>
+                        <div className='flex gap-2'>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Enroll</span>
+                                </label>
+                                <input type="text" {...register("enrolled", { required: true })} name='enrolled' placeholder="enroll" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Status</span>
+                                </label>
+                                <input type="text"  {...register("status", { required: true })} name='status' placeholder="status" className="input input-bordered" />
                             </div>
                         </div>
 

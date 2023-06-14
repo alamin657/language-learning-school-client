@@ -42,11 +42,13 @@ const ManageClasses = () => {
 
     const handleFeedback = event => {
         event.preventDefault()
+        const feedback = event.target.feedback.value
+
         const Denied = {
             status: 'Deny',
+            feedback: feedback
         }
 
-        const feedback = event.target.feedback.value
         if (feedback) {
             fetch(`http://localhost:5000/classes/${denied}`, {
                 method: 'PATCH',

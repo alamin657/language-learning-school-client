@@ -3,8 +3,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import './CheckoutForm.css'
 import { AuthContext } from '../../../Providers/AuthProviders';
 import useAxiosSecure from '../../../hooks/axiosSecure';
-const CheckoutForm = ({ price, id, image }) => {
-    console.log(image)
+const CheckoutForm = ({ price, id, image, enrolled }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext)
@@ -78,9 +77,16 @@ const CheckoutForm = ({ price, id, image }) => {
             const payment = {
                 email: user?.email,
                 transactionId: paymentIntent.id,
-                price, id, image
+                price, id, image,
+                Date: new Date()
             }
-            // axiosSecure.post('/payments', payment)
+
+            // update enrolled
+            const payments = {
+                id,
+                enrolled: enrolled + 1
+            }
+
 
 
             fetch(`http://localhost:5000/classes/payments`, {
@@ -97,6 +103,24 @@ const CheckoutForm = ({ price, id, image }) => {
                 .catch(error => {
                     console.error('Error saving payment:', error);
                 });
+
+
+
+            fetch(`http://localhost:5000/classes/abc/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payments)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+
         }
     }
 

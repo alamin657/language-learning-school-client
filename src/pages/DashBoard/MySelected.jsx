@@ -52,6 +52,7 @@ const MySelected = () => {
                         <th>Instructor</th>
                         <th>Price</th>
                         <th>Seats</th>
+                        <th>Enroll</th>
                         <th>Details</th>
 
                     </tr>
@@ -76,6 +77,7 @@ const MySelected = () => {
                                 <td>{item.instructor}</td>
                                 <td>{item.price}</td>
                                 <td>{item.seats}</td>
+                                <td>{item.enrolled}</td>
                                 <td className='flex gap-2'><Link to={`/dashboard/payment/${item?._id}`}><button className="btn btn-circle btn-outline bg-orange-600">
                                     pay
                                 </button></Link>

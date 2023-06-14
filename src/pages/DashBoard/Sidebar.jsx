@@ -18,11 +18,17 @@ const Sidebar = () => {
                 </div>
                 {
                     !role && <> <li><Link to='/dashboard/selected'>My Selected Classes</Link></li>
-                        <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li></>}
+                        <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li>
+                        <li><Link to='/dashboard/paymentHistory'>Payment History</Link></li>
+
+                    </>
+                }
 
                 {
-                    role === 'admin' && <><li><Link to='/dashboard/addClass'>Add A Class</Link></li>
-                        <li><Link to='/dashboard/myClass'>My Classes</Link></li></>}
+                    role === 'instructor' && <><li><Link to='/dashboard/addClass'>Add A Class</Link></li>
+
+                        <li><Link to='/dashboard/myClass'>My Classes</Link></li></>
+                }
 
                 {
                     role === 'admin' && <> <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>

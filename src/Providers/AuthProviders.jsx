@@ -13,8 +13,6 @@ const AuthProviders = ({ children }) => {
     const [error, setError] = useState(null)
     const [role, setRole] = useState(null)
     const [loading, setLoading] = useState(true)
-
-
     useEffect(() => {
         fetch(`http://localhost:5000/users/${user?.email}`)
             .then(res => res.json())

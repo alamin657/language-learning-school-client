@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
-
+import { FaEyeSlash } from "react-icons/fa";
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { signIn, googleProviderSignIn } = useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [password, setPassword] = useState(false)
+    const handlePassword = () => {
+        setPassword(!password)
+    }
     const from = location.state?.from?.pathname || "/";
     const onSubmit = data => {
         signIn(data.email, data.password)
@@ -57,7 +61,11 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password"  {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered" />
+
+                            <input type={password ? 'text' : 'password'}   {...register("password", { required: true })} name='password' placeholder="password" className="input input-bordered"
+                            />
+                            < FaEyeSlash onClick={handlePassword} />
+
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>

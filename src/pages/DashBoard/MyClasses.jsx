@@ -8,7 +8,7 @@ const MyClasses = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/classes/${user?.email}`)
             .then(res => res.json())
-            .then(data => setItems(data))
+            .then(data => console.log(data))
     }, [user])
     return (
         <div className="overflow-x-auto">
@@ -21,8 +21,10 @@ const MyClasses = () => {
                         <th>Email</th>
                         <th>Seats</th>
                         <th>Price</th>
+                        <th>Enroll</th>
                         <th>Status</th>
-                        <th></th>
+                        <th>Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -49,8 +51,26 @@ const MyClasses = () => {
                             <td>{item.email}</td>
                             <td>{item.seats}</td>
                             <td>{item.price}</td>
+                            <td>{item.enrolled}</td>
+                            <td>{item.status}</td>
+
                             <th>
-                                <button className="btn  btn-xs btn-warning">{item.status}</button>
+                                {/* The button to open modal */}
+                                <label htmlFor="my_modal_6" className="btn btn-sm btn-success">Feedback</label>
+
+                                {/* Put this part before </body> tag */}
+                                <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+                                <div className="modal">
+                                    <div className="modal-box">
+                                        <h3 className="font-bold text-lg">
+                                            {item.feedback}
+                                        </h3>
+
+                                        <div className="modal-action">
+                                            <label htmlFor="my_modal_6" className="btn">Close!</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </th>
                         </tr>)
                     }
