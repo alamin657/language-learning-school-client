@@ -15,6 +15,8 @@ import ManageClasses from "../pages/DashBoard/ManageClasses";
 import ManageUsers from "../pages/DashBoard/ManageUsers";
 import MyClasses from "../pages/DashBoard/MyClasses";
 import PaymentHistory from "../pages/DashBoard/PaymentHistory";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -56,30 +58,31 @@ const router = createBrowserRouter([
                 path: '/dashboard/myenrolled',
                 element: <MyEnrolled></MyEnrolled>
             },
+
             {
-                path: '/dashboard/addClass',
-                element: <AddAClass></AddAClass>
+                path: '/dashboard/paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
             },
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>
             },
             {
-                path: '/dashboard/manageclasses',
-                element: <ManageClasses></ManageClasses>
-            },
-            {
-                path: '/dashboard/manageusers',
-                element: <ManageUsers></ManageUsers>
+                path: '/dashboard/addClass',
+                element: <InstructorRoute> <AddAClass></AddAClass></InstructorRoute>
             },
             {
                 path: '/dashboard/myClass',
-                element: <MyClasses></MyClasses>
+                element: <InstructorRoute><MyClasses></MyClasses></InstructorRoute>
             },
             {
-                path: '/dashboard/paymentHistory',
-                element: <PaymentHistory></PaymentHistory>
-            }
+                path: '/dashboard/manageclasses',
+                element: <AdminRoute> <ManageClasses></ManageClasses></AdminRoute>
+            },
+            {
+                path: '/dashboard/manageusers',
+                element: <AdminRoute> <ManageUsers></ManageUsers></AdminRoute>
+            },
         ]
     }
 
