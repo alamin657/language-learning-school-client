@@ -1,0 +1,16 @@
+.home-page {
+    /* Common styles for both themes */
+    color: #000000;
+    /* Additional common styles */
+
+    /* Light theme styles */
+    &.light {
+        background-color: #ffffff;
+    }
+
+    /* Dark theme styles */
+    &.dark {
+        background-color: #222222;
+        color: #ffffff;
+    }
+}

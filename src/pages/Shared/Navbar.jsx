@@ -4,7 +4,7 @@ import logo from '../../assets/logo/25496642.jpg'
 import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, toggleTheme } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
@@ -25,6 +25,7 @@ const Navbar = () => {
         <li><Link>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
+        <li><p onClick={toggleTheme}>theme</p></li>
         {
             user && <li><Link to='/dashboard'>DashBoard</Link></li>
         }

@@ -13,11 +13,15 @@ const AuthProviders = ({ children }) => {
     const [error, setError] = useState(null)
     const [role, setRole] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [darkLightTheme, setDarkLightTheme] = useState(false)
+
+
     useEffect(() => {
         fetch(`https://language-learning-school-server-alamin657.vercel.app/users/${user?.email}`)
             .then(res => res.json())
             .then(data => setRole(data?.result.role))
     }, [user])
+
 
 
     const createUser = (email, password) => {
@@ -66,6 +70,10 @@ const AuthProviders = ({ children }) => {
         });
     }
 
+    const toggleTheme = () => {
+        setDarkLightTheme(!darkLightTheme)
+    }
+
     const authInfo = {
         user,
         error,
@@ -77,7 +85,10 @@ const AuthProviders = ({ children }) => {
         signIn,
         logOut,
         updateProfileUser,
-        googleProviderSignIn
+        googleProviderSignIn,
+        toggleTheme,
+        darkLightTheme
+
     }
     return (
         <AuthContext.Provider value={authInfo}>
