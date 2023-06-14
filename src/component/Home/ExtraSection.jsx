@@ -1,53 +1,41 @@
-import React, { useEffect, useState } from 'react';
-import { FaYoutube, FaUsers, FaStar } from "react-icons/fa";
+import React from 'react';
 const ExtraSection = () => {
-    const [extraSections, setExtraSections] = useState([]);
-    useEffect(() => {
-        fetch('extrasection.json')
-            .then(res => res.json())
-            .then(data => setExtraSections(data))
-    }, [])
     return (
-        <div className='mt-4'>
-            <div>
-                <h1 className='text-center font-bold'>Welcome to our Language <span className='text-orange-600'>Learning School!!!</span></h1>
-                <p className='text-center text-xl text-gray-500'>We are dedicated to helping individuals of all ages and backgrounds master <br /> new languages and unlock a world of opportunities.
-                </p>
-            </div>
-            <div className='grid sm:grid-cols-1 md:grid-cols-3 mt-4'>
-                {
-                    extraSections.map(extraSection =>
-                        <div key={extraSection.id}
-                            className="card card-compact w-96 bg-base-100 shadow-xl">
-                            <figure><img src={extraSection.image} alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">{extraSection.name}</h2>
-                                <p>{extraSection.description}</p>
-                                <div className='flex justify-between'>
-                                    <p className='flex gap-1'><FaYoutube />26Leasson</p>
-                                    <p className='flex gap-1'><FaUsers />20 Students</p>
-                                </div>
-                                <hr />
-                                <div className="card-actions justify-end">
+        <div data-aos-duration="3000" data-aos="fade-up-left">
+            <h1 className='text-4xl text-center text-orange-500 mt-2 font-bold'>Welcome to Language Learning School!!!</h1>
+            <p className='text-center text-gray-400'>Our Language Learning School is a leading institution dedicated to providing exceptional language <br /> education and fostering a global community of passionate learners.</p>
+            <div className='grid md:grid-cols-3 sm:grid-cols-1'>
+                <div className='flex max-w-5xl mx-auto gap-8 group'>
+                    <div className='bg-white/10 p-8 mix-blend-luminosity group-hover:scale-[0.85] duration-500 group-hover:bg-orange-400  cursor-pointer'>
+                        <img className='rounded-full w-2/5 mx-auto' src="https://templatekit.jegtheme.com/verbalizer/wp-content/uploads/sites/117/elementor/thumbs/woman-learning-english-online-e1625538535869-p9p4lrjtk1sd2tmdyid28uz6flhqadle7aui7qrlao.jpg" />
+                        <h3 className='text-xl font-bold text-center'>Diverse Language Programs</h3>
+                        <p className='text-center'> We offer comprehensive language programs that cover a wide array of languages, including English, Spanish, French, German, Mandarin....... </p>
+                        <p className='bg-orange-500 text-center py-2.5 mx-auto px-8 rounded-full'>Please click me!!!!</p>
+                    </div>
 
-                                    <p className='flex gap-2'>{extraSection.rating}<FaStar className='text-orange-600 mt-1' /> <FaStar className='text-orange-600 my-1' /><FaStar className='text-orange-600 my-1' /><FaStar className='text-orange-600 mt-1' /><FaStar className='text-orange-600 mt-1' /></p>
+                </div>
+                <div className='flex max-w-5xl mx-auto gap-8 group'>
+                    <div className='bg-white/10 p-8 mix-blend-luminosity  group-hover:bg-orange-400 group-hover:scale-[0.85] duration-500 cursor-pointer '>
+                        <img className='rounded-full w-2/5 mx-auto' src="https://templatekit.jegtheme.com/verbalizer/wp-content/uploads/sites/117/elementor/thumbs/girl-making-a-video-call-online-on-the-internet--e1625538546462-p9p4m1w1n86imj7da4tyiad8yu2rn1qfwq0uhsc9e8.jpg" />
+                        <h3 className='text-xl font-bold text-center'>Tailored Learning Approach</h3>
+                        <p className='text-center'> Our classes are conducted in a dynamic and engaging environment, fostering active participation and promoting a communicative.</p>
+                        <p className='bg-orange-500 text-center py-2.5 mx-auto px-8 rounded-full'>Please click me!!!!</p>
+                    </div>
 
-                                    <button className="btn btn-primary">Buy Now</button>
-                                </div>
-                            </div>
-                        </div>)
-                }
+                </div>
+                <div className='flex max-w-5xl mx-auto gap-8 group'>
+                    <div className='bg-white/10 p-8 mix-blend-luminosity group-hover:scale-[0.85] duration-500 group-hover:bg-orange-400  cursor-pointer'>
+                        <img className='rounded-full w-2/5 mx-auto' src="https://templatekit.jegtheme.com/verbalizer/wp-content/uploads/sites/117/elementor/thumbs/male-student-wearing-headphones-taking-online-course-seminar-watching-webinar--e1625538582195-p9p4mzq8h9gu8hu7sjgj01tucpfzc5gs1dibrqy368.jpg" />
+                        <h3 className='text-xl font-bold text-center'>Qualified and Supportive Instructors</h3>
+                        <p className='text-center'>Our team of dedicated instructors comprises highly qualified language professionals who possess extensive teaching experience. </p>
+                        <p className='bg-orange-500 text-center py-2.5 mx-auto px-8 rounded-full'>Please click me!!!!</p>
+                    </div>
+
+                </div>
             </div>
         </div>
+
     );
 };
 
 export default ExtraSection;
-
-/**
- *  <div
-                        key={extraSection.id}>
-                        <img className='h-[50%] w-[50%]' src={extraSection.image} alt="" />
-                        <p>{extraSection.price}</p>
-                    </div>
- */
