@@ -34,6 +34,19 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                const { displayName, email, photoURL } = user;
+                const newItem = { displayName, email, photoURL, role: 'student' }
+                fetch('https://language-learning-school-server-alamin657.vercel.app/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newItem)
+                })
+                    .then(res => res.json())
+                    .then(result => {
+                        console.log(result)
+                    })
                 Swal.fire({
                     icon: 'success',
                     title: 'Your Google LogIn Successfully',
@@ -45,6 +58,8 @@ const Login = () => {
             .catch(error => {
                 console.log(error)
             })
+
+
     }
     return (
         <div className="hero min-h-screen bg-base-200">

@@ -6,9 +6,9 @@ const MyClasses = () => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/classes/${user?.email}`)
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/classes/${user?.email}`)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => setItems(data))
     }, [user])
     return (
         <div className="overflow-x-auto">

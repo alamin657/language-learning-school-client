@@ -89,7 +89,7 @@ const CheckoutForm = ({ price, id, image, enrolled }) => {
 
 
 
-            fetch(`http://localhost:5000/classes/payments`, {
+            fetch(`https://language-learning-school-server-alamin657.vercel.app/classes/payments`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -106,7 +106,7 @@ const CheckoutForm = ({ price, id, image, enrolled }) => {
 
 
 
-            fetch(`http://localhost:5000/classes/abc/${id}`, {
+            fetch(`https://language-learning-school-server-alamin657.vercel.app/classes/abc/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

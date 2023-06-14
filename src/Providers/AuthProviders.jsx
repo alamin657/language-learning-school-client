@@ -14,9 +14,9 @@ const AuthProviders = ({ children }) => {
     const [role, setRole] = useState(null)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user?.email}`)
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/users/${user?.email}`)
             .then(res => res.json())
-            .then(data => setRole(data?.role))
+            .then(data => setRole(data?.result.role))
     }, [user])
 
 
@@ -39,7 +39,7 @@ const AuthProviders = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             if (currentUser) {
-                axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+                axios.post('https://language-learning-school-server-alamin657.vercel.app/jwt', { email: currentUser.email })
                     .then(data => {
                         // console.log(data.data.token)
                         localStorage.setItem('access-token', data.data.token)

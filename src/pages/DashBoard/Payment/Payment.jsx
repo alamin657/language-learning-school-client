@@ -10,7 +10,7 @@ const Payment = () => {
     const { id } = useParams()
     const [payments, setPayments] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/student/${id}`)
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/student/${id}`)
             .then(res => res.json())
             .then(data => setPayments(data))
     }, [id])

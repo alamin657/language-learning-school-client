@@ -5,7 +5,7 @@ const ManageUsers = () => {
     const [users, setUsers] = useState([]);
     const { role } = useContext(AuthContext)
     useEffect(() => {
-        fetch('http://localhost:5000/users/abc')
+        fetch('https://language-learning-school-server-alamin657.vercel.app/users/abc')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
@@ -17,7 +17,7 @@ const ManageUsers = () => {
         const admin = {
             role: 'admin'
         }
-        fetch(`http://localhost:5000/users/xyz/${email}`, {
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/users/xyz/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ const ManageUsers = () => {
         const instructor = {
             role: 'instructor'
         }
-        fetch(`http://localhost:5000/users/xyz/${email}`, {
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/users/xyz/${email}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

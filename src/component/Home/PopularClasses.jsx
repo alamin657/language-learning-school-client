@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const PopularClasses = () => {
     const [classes, setClasses] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://language-learning-school-server-alamin657.vercel.app/classes')
             .then(res => res.json())
             .then(data => setClasses(data.slice(0, 6)))
     }, [])

@@ -5,7 +5,7 @@ const ManageClasses = () => {
     const [manages, setManages] = useState([])
     const [denied, setDenied] = useState(null)
     useEffect(() => {
-        fetch(`http://localhost:5000/classes`)
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/classes`)
             .then(res => res.json())
             .then(data => setManages(data))
     }, [])
@@ -14,7 +14,7 @@ const ManageClasses = () => {
         const approved = {
             status: 'approve'
         }
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/classes/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const ManageClasses = () => {
         }
 
         if (feedback) {
-            fetch(`http://localhost:5000/classes/${denied}`, {
+            fetch(`https://language-learning-school-server-alamin657.vercel.app/classes/${denied}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

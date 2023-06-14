@@ -5,6 +5,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 const Sidebar = () => {
     // const isAdmin = true;
     const { role } = useContext(AuthContext)
+    console.log(role)
     return (
         <div className="drawer-side">
             <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
@@ -17,7 +18,7 @@ const Sidebar = () => {
 
                 </div>
                 {
-                    !role && <> <li><Link to='/dashboard/selected'>My Selected Classes</Link></li>
+                    role === 'student' && <> <li><Link to='/dashboard/selected'>My Selected Classes</Link></li>
                         <li><Link to='/dashboard/myenrolled'>My Enrolled Classes</Link></li>
                         <li><Link to='/dashboard/paymentHistory'>Payment History</Link></li>
 

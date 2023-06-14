@@ -6,7 +6,7 @@ const Classes = () => {
     const { user, role } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://language-learning-school-server-alamin657.vercel.app/classes')
             .then(res => res.json())
             .then(data => setClasses(data))
     }, [])
@@ -21,7 +21,7 @@ const Classes = () => {
             price,
             email: user?.email
         }
-        fetch(`http://localhost:5000/students/${_id}`, {
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/students/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

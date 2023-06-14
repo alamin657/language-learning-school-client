@@ -6,7 +6,7 @@ const MySelected = () => {
     const { user } = useContext(AuthContext)
     const [items, setitems] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/students/${user?.email}`)
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/students/${user?.email}`)
             .then(res => res.json())
             .then(data => setitems(data))
     }, [user])
@@ -22,7 +22,7 @@ const MySelected = () => {
         //     cancelButtonColor: '#d33',
         //     confirmButtonText: 'Yes, delete it!'
         // })
-        fetch(`http://localhost:5000/students/${_id}`, {
+        fetch(`https://language-learning-school-server-alamin657.vercel.app/students/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

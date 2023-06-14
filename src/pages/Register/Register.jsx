@@ -10,8 +10,8 @@ const Register = () => {
     const onSubmit = data => {
 
         const { name, email, photoURL } = data;
-        const newItem = { name, email, photoURL }
-        fetch('http://localhost:5000/users', {
+        const newItem = { name, email, photoURL, role: 'student' }
+        fetch('https://language-learning-school-server-alamin657.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -45,8 +45,8 @@ const Register = () => {
                 const user = result.user;
                 console.log(user)
                 const { displayName, email, photoURL } = user;
-                const newItem = { displayName, email, photoURL }
-                fetch('http://localhost:5000/users', {
+                const newItem = { displayName, email, photoURL, role: 'student' }
+                fetch('https://language-learning-school-server-alamin657.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
