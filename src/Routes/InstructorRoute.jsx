@@ -1,6 +1,8 @@
-import { Navigate, useLocation } from "react-router";
+
+
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthProvider";
+import { AuthContext } from "../Providers/AuthProviders";
+import { Navigate, useLocation } from "react-router-dom";
 
 const InstructorRoute = ({ children }) => {
     const { user, loading, role } = useContext(AuthContext);
@@ -10,7 +12,7 @@ const InstructorRoute = ({ children }) => {
         <progress className="progress w-56"></progress>
     }
 
-    if (user && role === "admin") {
+    if (user && role === "instructor") {
         return children;
     }
     return <Navigate to="/" state={{ from: location }} replace></Navigate>

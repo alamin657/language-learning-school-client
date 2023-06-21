@@ -36,7 +36,7 @@ const Classes = () => {
                         title: 'Success!',
                         text: 'My Selected Class   Successfully',
                         icon: 'success',
-                        confirmButtonText: 'Cool'
+                        confirmButtonText: 'Ok'
                     })
                 }
             })
